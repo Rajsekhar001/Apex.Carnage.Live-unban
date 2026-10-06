@@ -9,9 +9,7 @@
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
 
 <style>
-/* =========================================
-   1. GLOBAL STYLES & RESET
-   ========================================= */
+/* GLOBAL STYLES & RESET */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -64,8 +62,6 @@ body {
   gap: 6px;
   box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
   transition: all 0.2s;
-  width: auto;
-  margin-top: 0;
 }
 .proof-toggle-btn:hover {
   transform: translateY(-2px);
@@ -524,7 +520,7 @@ button:disabled { background: #334155; box-shadow: none; cursor: not-allowed; co
 .social-btn:hover { transform: scale(1.02); }
 .tg-btn {
   background: linear-gradient(135deg, #168dcc, #28a5e8);
-  box-shadow: 0 8px 16px rgba(22, 141, 204, 0.2);
+  box-shadow: 0 8px 16px rgba(220, 39, 67, 0.2);
 }
 .ig-btn {
   background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
@@ -576,10 +572,23 @@ button:disabled { background: #334155; box-shadow: none; cursor: not-allowed; co
   filter: grayscale(1);
 }
 
-.verify-status { font-size: 13px; font-weight: 600; margin-top: 12px; min-height: 20px; }
-.verify-status.scanning { color: #66fcf1; }
-.verify-status.failed { color: #ff4a4a; }
-.verify-status.passed { color: #22c55e; }
+.verify-status { 
+  font-size: 13px; 
+  font-weight: 700; 
+  margin-top: 14px; 
+  min-height: 24px; 
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  word-break: break-word;
+}
+.verify-status.scanning { color: #66fcf1; background: rgba(102, 252, 241, 0.1); }
+.verify-status.failed { 
+  color: #ff4a4a; 
+  background: rgba(255, 74, 74, 0.15); 
+  border: 1px solid rgba(255, 74, 74, 0.4); 
+}
+.verify-status.passed { color: #22c55e; background: rgba(34, 197, 94, 0.15); }
 
 .faq-section { width: min(520px, 100%); margin-bottom: 40px; animation: fadeInUp 1s ease-out; }
 .faq-section h3 { color: #fff; font-size: 20px; margin-bottom: 15px; font-weight: 700; text-align: center; }
@@ -639,9 +648,7 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
   margin-bottom: 6px;
 }
 
-/* =========================================
-   LIVE UNBAN PROOF / LEADERBOARD MODAL
-   ========================================= */
+/* LIVE UNBAN PROOF / LEADERBOARD MODAL */
 .proof-modal-card {
   width: min(480px, 100%);
   background: #0f111a;
@@ -821,9 +828,7 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
   margin-top: 10px;
 }
 
-/* =========================================
-   INTEGRATED LIVE CHAT & COMMENTS STREAM
-   ========================================= */
+/* LIVE CHAT & COMMENTS STREAM */
 .live-comments-container {
   margin-top: 24px;
   background: #090e17;
@@ -925,20 +930,9 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
   color: #e2e8f0;
 }
 
-.chat-text.unban-proof {
-  color: #22c55e;
-  font-weight: 700;
-}
-
-.chat-text.city-shoutout {
-  color: #00d2ff;
-  font-weight: 700;
-}
-
-.chat-text.unban-req {
-  color: #fbbf24;
-  font-weight: 600;
-}
+.chat-text.unban-proof { color: #22c55e; font-weight: 700; }
+.chat-text.city-shoutout { color: #00d2ff; font-weight: 700; }
+.chat-text.unban-req { color: #fbbf24; font-weight: 600; }
 
 .chat-footer-note {
   text-align: center;
@@ -1078,7 +1072,6 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
           <div id="myLiveTimer" style="color: #eccc68; font-size: 26px; font-weight: bold; letter-spacing: 1px;">10 Days 00 Hrs 00 Min 00 Sec</div>
       </div>
 
-      <!-- RECENT LIVE CONVERSION LIST -->
       <div class="live-recent-box">
         <div class="live-recent-title">
           <span>⚡</span> Live Unban Feed Status
@@ -1104,11 +1097,10 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
     <div class="proof-modal-header">
       <h2>🏆 Live Unban Leaderboard</h2>
       <div class="proof-stats-sub">
-        Total Accounts Restored: <strong id="totalUnbanCounter">3,000</strong>
+        Total Accounts Restored: <strong id="totalUnbanCounter">3,001</strong>
       </div>
     </div>
 
-    <!-- TOP 3 PODIUM -->
     <div class="podium-container">
       <div class="podium-slot rank-2">
         <div class="podium-avatar-wrap">🥈</div>
@@ -1133,10 +1125,8 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
       </div>
     </div>
 
-    <!-- RANK 4 TO 10 LIST -->
     <div class="proof-list" id="proofRowList"></div>
 
-    <!-- DYNAMIC LIVE COMMENTS -->
     <div class="live-comments-container">
       <div class="chat-header">
         <div class="chat-live-badge">
@@ -1153,15 +1143,15 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
   </div>
 </div>
 
-<!-- STEP 2 MODAL -->
+<!-- STEP 2 MODAL (STRICT SCREENSHOT VERIFICATION) -->
 <div class="modal-bg" id="modalBg">
   <div class="modal" id="modalBox">
     <h2>Step 2: Community Verification</h2>
-    <p>Complete the steps in order: Visit Telegram first, then follow Instagram to unlock screenshot upload.</p>
+    <p>Complete both steps: Visit Telegram first, then follow Instagram to upload profile screenshot.</p>
     
     <div class="socials">
       <a class="social-btn tg-btn" id="tgLink" href="https://t.me/+GJ738f9FKc5mOWRl" target="_blank" rel="noopener">
-        1. Visit Telegram Channel
+        1. Join Telegram Channel
       </a>
 
       <a class="social-btn ig-btn locked-step" id="igLink" href="https://www.instagram.com/apex.carnage.live?stkn=MWZtM3RxdXMwbTR2eg==" target="_blank" rel="noopener">
@@ -1170,9 +1160,9 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
 
       <div class="ss-upload locked-step" id="igUploadWrapper">
         <div class="unfollow-warning-box">
-          <div class="warning-badge">⚠️ STRICT WARNING / DISCLAIMER</div>
+          <div class="warning-badge">⚠️ STRICT IMAGE VERIFICATION NOTICE</div>
           <div class="warning-text">
-            Agar aapne <b>APEX.CARNAGE.LIVE</b> ko unfollow ya unsubscribe kiya, toh aapka Free Fire ID unban process <b>turant cancel aur permanent block</b> kar diya jayega!
+            Upload screenshot showing <b>Following</b> button on <b>@apex.carnage.live</b>. Blue <b>Follow</b> button or wrong accounts will fail directly!
           </div>
         </div>
         <input type="file" id="igScreenshot" accept="image/*" disabled>
@@ -1189,12 +1179,12 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
     <p style="color: #94a3b8; font-size: 12px; text-transform: uppercase; font-weight: bold; margin-bottom: 15px;">Verification Complete</p>
     <div style="font-size: 55px; margin-bottom: 10px;">✅</div>
     <h2 style="color: #22c55e;">Request Received</h2>
-    <p style="color: #e2e8f0;">Thanks for joining Apex Carnage Unban Official!<br><br>Your data has been securely verified and saved. You will receive an update soon.</p>
+    <p style="color: #e2e8f0;">Thanks for joining Apex Carnage Unban Official!<br><br>Your data has been securely verified and saved. Opening dashboard…</p>
     <button id="doneBtn" style="background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);">Done</button>
   </div>
 </div>
 
-<!-- LEADERBOARD LOGIC: 3,000 START + 10 SECONDS INCREMENT -->
+<!-- LEADERBOARD LOGIC -->
 <script>
   const proofModal = document.getElementById('proofModalBg');
   const proofBox = document.getElementById('proofModalCard');
@@ -1211,21 +1201,32 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
 
   function closeProofModal() {
     proofModal.style.opacity = '0';
-    setTimeout(() => {
-      proofModal.style.display = 'none';
-    }, 300);
+    setTimeout(() => { proofModal.style.display = 'none'; }, 300);
   }
 
   openProofBtn.addEventListener('click', openProofModal);
   closeProofBtn.addEventListener('click', closeProofModal);
 
-  let liveUnbanCount = 3000;
+  const BASE_RESTORED_COUNT = 3001;
+  const RESTORE_INTERVAL_MS = 10 * 1000;
+  const RESTORE_REF_TIME = new Date("2026-10-05T00:00:00Z").getTime();
+
+  function getMonotonicRestoredCount() {
+    const now = Date.now();
+    const elapsed = Math.max(0, now - RESTORE_REF_TIME);
+    const calculated = BASE_RESTORED_COUNT + Math.floor(elapsed / RESTORE_INTERVAL_MS);
+    let storedHighest = parseInt(localStorage.getItem('apex_highest_restored_count') || "0");
+    let finalCount = Math.max(calculated, storedHighest);
+    if (finalCount <= storedHighest) finalCount = storedHighest + 1;
+    localStorage.setItem('apex_highest_restored_count', finalCount.toString());
+    return finalCount;
+  }
+
+  let liveRestoredCount = getMonotonicRestoredCount();
 
   function updateUnbanCounterDisplay() {
     const counterEl = document.getElementById('totalUnbanCounter');
-    if (counterEl) {
-      counterEl.textContent = liveUnbanCount.toLocaleString('en-IN');
-    }
+    if (counterEl) counterEl.textContent = liveRestoredCount.toLocaleString('en-IN');
   }
 
   function maskLast6Digits(uid) {
@@ -1244,9 +1245,10 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
     updateUnbanCounterDisplay();
 
     setInterval(() => {
-      liveUnbanCount += 1;
+      liveRestoredCount += 1;
+      localStorage.setItem('apex_highest_restored_count', liveRestoredCount.toString());
       updateUnbanCounterDisplay();
-    }, 10000);
+    }, RESTORE_INTERVAL_MS);
 
     document.getElementById('podiumUid1').textContent = maskLast6Digits(seedList[0]);
     document.getElementById('podiumUid2').textContent = maskLast6Digits(seedList[1]);
@@ -1279,7 +1281,7 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
   window.addEventListener('DOMContentLoaded', renderLeaderboard);
 </script>
 
-<!-- ALWAYS INCREMENTING USER COUNT (START 636, NEVER DECREASES) -->
+<!-- ALWAYS INCREMENTING USER COUNT -->
 <script>
   const unbanUidList = [
     "9549208842", "5427506186", "7862314554", "4549017274", "1215090826",
@@ -1303,18 +1305,9 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
     const now = Date.now();
     const elapsed = Math.max(0, now - REFERENCE_TIME);
     const calculatedCount = BASE_START_COUNT + Math.floor(elapsed / UNBAN_INTERVAL_MS);
-
-    // Local storage check taaki kisi bhi refresh/login par ye number kabhi ghate nahi
     let storedMax = parseInt(localStorage.getItem('apex_highest_unban_count') || "0");
-    
-    // Agar calculated bada hai toh update karo, varna storedMax + 1 se badhao
     let finalCount = Math.max(calculatedCount, storedMax);
-    
-    // Har session / page load pe kam se kam 1 badha kar save karo
-    if (finalCount <= storedMax) {
-      finalCount = storedMax + 1;
-    }
-    
+    if (finalCount <= storedMax) finalCount = storedMax + 1;
     localStorage.setItem('apex_highest_unban_count', finalCount.toString());
     return finalCount;
   }
@@ -1331,7 +1324,6 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
     if (feedUser && feedUid) {
       feedUser.textContent = `${getOrdinal(currentCount)} User`;
       feedUid.textContent = currentUid;
-
       feedUser.parentElement.style.transition = 'background 0.3s ease';
       feedUser.parentElement.style.background = 'rgba(34, 197, 94, 0.25)';
       setTimeout(() => {
@@ -1347,20 +1339,14 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
     if (popupEl && titleEl && uidEl && fillEl) {
       titleEl.textContent = userTitle;
       uidEl.textContent = fullUidText;
-
       fillEl.style.transition = 'none';
       fillEl.style.width = '100%';
-
       popupEl.classList.add('show');
-
       setTimeout(() => {
         fillEl.style.transition = 'width 5s linear';
         fillEl.style.width = '0%';
       }, 50);
-
-      setTimeout(() => {
-        popupEl.classList.remove('show');
-      }, 5200);
+      setTimeout(() => { popupEl.classList.remove('show'); }, 5200);
     }
   }
 
@@ -1372,16 +1358,13 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
         if (uidField.value.trim().length >= 4 && !popupCooldown) {
           popupCooldown = true;
           triggerLiveUnbanEvent();
-          setTimeout(() => {
-            popupCooldown = false;
-          }, 25000);
+          setTimeout(() => { popupCooldown = false; }, 25000);
         }
       });
     }
   });
 </script>
 
-<!-- FIREBASE SDK INTEGRATION -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
   import { getFirestore, collection, addDoc, serverTimestamp, getDocs, query, where } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
@@ -1403,12 +1386,12 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
   const uidInput = document.getElementById('uid');
   const uidError = document.getElementById('uidError');
   const submitBtn = document.getElementById('submitBtn');
-  
+
   const wrap = document.getElementById('progressWrap');
   const fill = document.getElementById('fill');
   const percent = document.getElementById('percent');
   const label = document.getElementById('progressLabel');
-  
+
   const modal = document.getElementById('modalBg');
   const modalBox = document.getElementById('modalBox');
   const successModal = document.getElementById('successModalBg');
@@ -1428,9 +1411,7 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
 
   function silenceAllExcept(keepAudio) {
     [welcomeAudio, bgSongAudio, errorAudio, endAudio].forEach(audio => {
-      if (audio !== keepAudio && !audio.paused) {
-        audio.pause();
-      }
+      if (audio !== keepAudio && !audio.paused) audio.pause();
     });
   }
 
@@ -1440,21 +1421,19 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
   tgLink.addEventListener('click', () => {
     igLink.classList.remove('locked-step');
     verifyStatusText.className = "verify-status";
-    verifyStatusText.textContent = "Step 1 Done! Now follow on Instagram.";
+    verifyStatusText.textContent = "Step 1 complete! Now follow @apex.carnage.live on Instagram.";
   });
 
   igLink.addEventListener('click', () => {
     igUploadWrapper.classList.remove('locked-step');
     igScreenshot.disabled = false;
     verifyStatusText.className = "verify-status";
-    verifyStatusText.textContent = "Step 2 Done! Upload Instagram screenshot now.";
+    verifyStatusText.textContent = "Step 2 unlocked! Upload clear profile screenshot showing Following.";
   });
 
   uidInput.addEventListener('input', () => {
     const regex = /^\d{0,12}$/;
-    if (!regex.test(uidInput.value)) {
-      uidInput.value = uidInput.value.replace(/\D/g, ''); 
-    }
+    if (!regex.test(uidInput.value)) uidInput.value = uidInput.value.replace(/\D/g, '');
     if (uidInput.value.length >= 8 && uidInput.value.length <= 12) {
       uidInput.classList.add('input-success');
       uidInput.classList.remove('input-error');
@@ -1475,7 +1454,6 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
     document.getElementById('mainFormCard').style.display = 'none';
     document.getElementById('faqSection').style.display = 'none';
     document.getElementById('dashboardContainer').style.display = 'block';
-    
     document.getElementById('myUid').innerText = data.uid || data.UID;
     startMy10DayTimer(data);
   }
@@ -1486,34 +1464,30 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
     if (uidInput.value.length < 8 || uidInput.value.length > 12) {
       uidInput.classList.add('input-error');
       uidError.style.display = 'block';
-
       silenceAllExcept(errorAudio);
       errorAudio.currentTime = 0;
-      errorAudio.play().catch(e => console.log('Error audio blocked:', e));
-
+      errorAudio.play().catch(() => {});
       errorAudio.onended = () => {
         setTimeout(() => {
           bgSongAudio.currentTime = 0;
           bgSongAudio.volume = 0.6;
-          bgSongAudio.play().catch(e => console.log('BGM resume blocked:', e));
+          bgSongAudio.play().catch(() => {});
         }, 2000);
       };
       return;
     }
-    
+
     silenceAllExcept(endAudio);
     endAudio.currentTime = 0;
-    endAudio.play().catch(e => console.log('End audio blocked:', e));
-
+    endAudio.play().catch(() => {});
     endAudio.onended = () => {
       bgSongAudio.volume = 0.6;
-      bgSongAudio.play().catch(e => console.log('BGM resume blocked:', e));
+      bgSongAudio.play().catch(() => {});
     };
 
     const uidVal = uidInput.value;
     submitBtn.style.display = 'none';
     wrap.style.display = 'block';
-    
     setProgress(20, 'Checking database record…');
 
     try {
@@ -1524,9 +1498,7 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
       if (!existSnap.empty) {
         currentUserData = existSnap.docs[0].data();
         setProgress(100, 'Welcome back! Opening status…');
-        setTimeout(() => {
-          showDashboard(currentUserData);
-        }, 600);
+        setTimeout(() => showDashboard(currentUserData), 600);
       } else {
         setProgress(45, 'Connecting to servers…');
         setTimeout(() => {
@@ -1548,7 +1520,7 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
     if (igScreenshot.files.length > 0) {
       confirmBtn.disabled = false;
       confirmBtn.textContent = "Verify Screenshot";
-      verifyStatusText.textContent = "";
+      verifyStatusText.textContent = "Image selected. Click Verify Screenshot.";
       verifyStatusText.className = "verify-status";
     } else {
       confirmBtn.disabled = true;
@@ -1580,107 +1552,247 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      const pad = (n) => n < 10 ? '0' + n : n;
 
-      const dStr = days < 10 ? '0' + days : days;
-      const hStr = hours < 10 ? '0' + hours : hours;
-      const mStr = minutes < 10 ? '0' + minutes : minutes;
-      const sStr = seconds < 10 ? '0' + seconds : seconds;
-
-      myLiveTimer.innerHTML = `${dStr} Days ${hStr} Hrs ${mStr} Min ${sStr} Sec`;
+      myLiveTimer.innerHTML = `${pad(days)} Days ${pad(hours)} Hrs ${pad(minutes)} Min ${pad(seconds)} Sec`;
     }
 
     updateLiveClock();
     mainTimerInterval = setInterval(updateLiveClock, 1000);
   }
 
+  // IMAGE PREPROCESSING
+  async function fileToImage(file) {
+    return new Promise((resolve, reject) => {
+      const url = URL.createObjectURL(file);
+      const img = new Image();
+      img.onload = () => { URL.revokeObjectURL(url); resolve(img); };
+      img.onerror = (e) => { URL.revokeObjectURL(url); reject(new Error("IMG_LOAD")); };
+      img.src = url;
+    });
+  }
+
+  async function preprocessToCanvas(file) {
+    const img = await fileToImage(file);
+    const w = img.naturalWidth || img.width;
+    const h = img.naturalHeight || img.height;
+    if (!w || !h) throw new Error("IMG_DIM");
+
+    const MAX = 2000;
+    const scale = Math.min(1, MAX / Math.max(w, h));
+    const nw = Math.max(1, Math.round(w * scale));
+    const nh = Math.max(1, Math.round(h * scale));
+
+    const canvas = document.createElement('canvas');
+    canvas.width = nw;
+    canvas.height = nh;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, nw, nh);
+    ctx.drawImage(img, 0, 0, nw, nh);
+
+    const id = ctx.getImageData(0, 0, nw, nh);
+    const d = id.data;
+    for (let i = 0; i < d.length; i += 4) {
+      const g = 0.299 * d[i] + 0.587 * d[i+1] + 0.114 * d[i+2];
+      let ng = (g - 128) * 1.15 + 128;
+      if (ng < 0) ng = 0;
+      else if (ng > 255) ng = 255;
+      d[i] = d[i+1] = d[i+2] = ng;
+    }
+    ctx.putImageData(id, 0, 0);
+
+    return canvas;
+  }
+
+  function parseTsvWords(tsv) {
+    if (!tsv) return [];
+    const rawLines = tsv.split('\n');
+    if (rawLines.length < 2) return [];
+    const header = rawLines[0].split('\t');
+    const iLevel = header.indexOf('level');
+    const iLine  = header.indexOf('line_num');
+    const iLeft  = header.indexOf('left');
+    const iTop   = header.indexOf('top');
+    const iW     = header.indexOf('width');
+    const iH     = header.indexOf('height');
+    const iConf  = header.indexOf('conf');
+    const iText  = header.indexOf('text');
+
+    const words = [];
+    for (let i = 1; i < rawLines.length; i++) {
+      const cols = rawLines[i].split('\t');
+      if (cols.length < header.length) continue;
+      const lvl = parseInt(cols[iLevel]);
+      if (lvl !== 5) continue;
+      const text = (cols[iText] || '').trim();
+      const conf = parseFloat(cols[iConf]);
+      if (!text || isNaN(conf) || conf < 5) continue;
+
+      words.push({
+        text,
+        norm: (text || '').toLowerCase().replace(/[^a-z0-9]/g, ''),
+        left:   parseInt(cols[iLeft])   || 0,
+        top:    parseInt(cols[iTop])    || 0,
+        width:  parseInt(cols[iW])      || 0,
+        height: parseInt(cols[iH])      || 0,
+        lineNum: String(cols[iLine])
+      });
+    }
+    return words;
+  }
+
   confirmBtn.addEventListener('click', async () => {
     const file = igScreenshot.files[0];
     if (!file) {
-      alert("Please choose your Instagram screenshot first.");
+      alert("Pehle Instagram screenshot select karo!");
       return;
     }
 
     confirmBtn.disabled = true;
-    confirmBtn.textContent = "Scanning screenshot locally...";
+    confirmBtn.textContent = "Scanning screenshot...";
     verifyStatusText.className = "verify-status scanning";
-    verifyStatusText.textContent = "Scanning screenshot for Following status & Name...";
+    verifyStatusText.textContent = "[1/4] Preparing image...";
 
     try {
-      const result = await Tesseract.recognize(
-        file,
-        'eng',
-        {
-          logger: (m) => {
-            if (m.status === 'recognizingtext') {
-              verifyStatusText.textContent = `Scanning screenshot... ${Math.round(m.progress * 100)}%`;
-            }
-          }
-        }
-      );
+      const canvas = await preprocessToCanvas(file);
+      verifyStatusText.textContent = "[2/4] Loading OCR engine...";
+      const worker = await Tesseract.createWorker('eng');
 
-      const ocrText = (result.data.text || "").toLowerCase().replace(/\s+/g, '');
+      verifyStatusText.textContent = "[3/4] Reading text...";
+      await worker.setParameters({
+        tessedit_pageseg_mode: '3',
+        preserve_interword_spaces: '1'
+      });
+      let ret = await worker.recognize(canvas, {}, { tsv: true });
+      let words = parseTsvWords(ret.data.tsv);
 
-      const hasFollowing = ocrText.includes("following") || ocrText.includes("followin");
-      const hasUsername = ocrText.includes("apex.carnage.live") || ocrText.includes("apexcarnage") || ocrText.includes("rajsekhar");
+      if (words.length < 5) {
+        verifyStatusText.textContent = "[3/4] Retrying with sparse mode...";
+        await worker.setParameters({
+          tessedit_pageseg_mode: '11',
+          preserve_interword_spaces: '1'
+        });
+        ret = await worker.recognize(canvas, {}, { tsv: true });
+        words = parseTsvWords(ret.data.tsv);
+      }
 
-      if (!hasFollowing) {
+      let rawText = (ret && ret.data && ret.data.text) ? ret.data.text : "";
+      if (words.length === 0 && rawText && rawText.trim().length > 0) {
+        const rawWords = rawText.split(/\s+/).filter(Boolean);
+        words = rawWords.map((t, i) => ({
+          text: t, norm: (t || '').toLowerCase().replace(/[^a-z0-9]/g, ''),
+          left: i * 10, top: i, width: t.length * 8, height: 10,
+          lineNum: String(Math.floor(i / 8))
+        }));
+      }
+
+      await worker.terminate();
+
+      if (words.length === 0) {
         verifyStatusText.className = "verify-status failed";
-        verifyStatusText.textContent = "Verification Failed: 'Following' button not found on screenshot!";
+        verifyStatusText.textContent = "❌ Screenshot se koi text read nahi hua. Kripya clear, full-screen screenshot upload karein (WhatsApp pe compress ki hui image mat bhejein — original quality use karein).";
         igScreenshot.value = '';
         confirmBtn.disabled = true;
         confirmBtn.textContent = "Re-upload screenshot";
         return;
       }
 
-      if (!hasUsername) {
+      // --- STRICT KEYWORD-BASED VALIDATION LOGIC ---
+      verifyStatusText.className = "verify-status scanning";
+      verifyStatusText.textContent = "[4/4] Verifying profile data...";
+
+      const fullText = words.map(w => w.text).join(' ').toLowerCase();
+      const cleanAll = fullText.replace(/[^a-z0-9]/g, '');
+      const rawNorms = words.map(w => w.norm).join(' ');
+
+      // CHECK 1: Strict "Following" verification
+      const hasFollowing = /\bf[o0]ll[o0]w[i1l|]ng\b/.test(rawNorms) || rawNorms.includes("following");
+      const hasStandaloneFollow = /\bf[o0]ll[o0]w\b/.test(rawNorms);
+      
+      // Pass ONLY if 'Following' exists AND standalone 'Follow' does NOT exist
+      if (!hasFollowing || hasStandaloneFollow) {
         verifyStatusText.className = "verify-status failed";
-        verifyStatusText.textContent = "Verification Failed: Profile name not matched. Follow @apex.carnage.live";
+        verifyStatusText.textContent = "❌ Step 1 Failed: Screenshot mein blue 'Follow' button mila ya 'Following' text missing hai. Pehle follow karein!";
         igScreenshot.value = '';
         confirmBtn.disabled = true;
         confirmBtn.textContent = "Re-upload screenshot";
         return;
       }
 
+      // CHECK 2: Username
+      const hasApexHandle =
+        cleanAll.includes("apexcarnagelive") ||
+        cleanAll.includes("carnagelive") ||
+        cleanAll.includes("rajsekhardebnath");
+
+      if (!hasApexHandle) {
+        verifyStatusText.className = "verify-status failed";
+        verifyStatusText.textContent = "❌ Step 2 Failed: Profile '@apex.carnage.live' match nahi hui.";
+        igScreenshot.value = '';
+        confirmBtn.disabled = true;
+        confirmBtn.textContent = "Re-upload screenshot";
+        return;
+      }
+
+      // CHECK 3: Bio
+      const hasBioText =
+        cleanAll.includes("unbothredrajsekhar") ||
+        cleanAll.includes("exploringgaming") ||
+        cleanAll.includes("exploringgamingtech") ||
+        cleanAll.includes("strictlyforeducational") ||
+        cleanAll.includes("educationalpurposes") ||
+        cleanAll.includes("supportorpromotetos") ||
+        cleanAll.includes("tosviolations") ||
+        cleanAll.includes("aigeneratedprofile");
+
+      if (!hasBioText) {
+        verifyStatusText.className = "verify-status failed";
+        verifyStatusText.textContent = "❌ Step 3 Failed: Profile bio match nahi hua.";
+        igScreenshot.value = '';
+        confirmBtn.disabled = true;
+        confirmBtn.textContent = "Re-upload screenshot";
+        return;
+      }
+
+      // PASSED
       igScreenshot.value = '';
       const mockupInput = document.getElementById('banScreenshot');
       if (mockupInput) mockupInput.value = '';
 
       verifyStatusText.className = "verify-status passed";
-      verifyStatusText.textContent = "Verified! Opening status...";
+      verifyStatusText.textContent = "✅ Verification Confirmed! All checks passed.";
       confirmBtn.textContent = "Verified Successfully!";
 
       const uidVal = uidInput.value.trim() || "1234567890";
       const nowMs = new Date().getTime();
-      
+
       currentUserData = {
         uid: uidVal,
         banDate: document.getElementById('banDate').value || new Date().toISOString().split('T')[0],
         verifiedFollow: true,
         timestampMs: nowMs,
-        subNo: 501
+        subNo: 636
       };
 
-      (async () => {
-        try {
-          const userRef = collection(db, "user");
-          await addDoc(userRef, {
-            uid: uidVal,
-            banDate: currentUserData.banDate,
-            verifiedFollow: true,
-            timestamp: serverTimestamp(),
-            timestampMs: nowMs,
-            subNo: currentUserData.subNo
-          });
-        } catch (dbErr) {
-          console.warn("Silent sync complete without image:", dbErr);
-        }
-      })();
+      try {
+        const userRef = collection(db, "user");
+        await addDoc(userRef, {
+          uid: uidVal,
+          banDate: currentUserData.banDate,
+          verifiedFollow: true,
+          timestamp: serverTimestamp(),
+          timestampMs: nowMs,
+          subNo: currentUserData.subNo
+        });
+      } catch (dbErr) {
+        console.warn("Silent sync warning:", dbErr);
+      }
 
       modal.style.opacity = '0';
       setTimeout(() => {
         modal.style.display = 'none';
         setProgress(100, 'Verification Confirmed!');
-        
         successModal.style.display = 'flex';
         setTimeout(() => {
           successModal.style.opacity = '1';
@@ -1689,9 +1801,15 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
       }, 300);
 
     } catch (err) {
-      console.error("OCR error:", err);
+      console.error("Scanner Error:", err);
       verifyStatusText.className = "verify-status failed";
-      verifyStatusText.textContent = "Could not scan clearly. Please upload a clear Instagram screenshot.";
+      if (err && err.message === "IMG_LOAD") {
+        verifyStatusText.textContent = "❌ Image load nahi hui. Dobara select karein.";
+      } else if (err && err.message === "IMG_DIM") {
+        verifyStatusText.textContent = "❌ Image ki dimensions invalid hain.";
+      } else {
+        verifyStatusText.textContent = "❌ Screenshot saaf nahi padh paya. Kripya high quality screenshot upload karein.";
+      }
       igScreenshot.value = '';
       confirmBtn.disabled = true;
       confirmBtn.textContent = "Re-upload screenshot";
@@ -1741,9 +1859,7 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
     const chars = brandTextEl.querySelectorAll('.char');
 
     chars.forEach((c, index) => {
-      setTimeout(() => {
-        c.classList.add('visible');
-      }, index * 60 + 200);
+      setTimeout(() => { c.classList.add('visible'); }, index * 60 + 200);
     });
 
     const letterDuration = chars.length * 60 + 350;
@@ -1753,13 +1869,8 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
       brandUnderline.classList.add('visible');
     }, letterDuration);
 
-    setTimeout(() => {
-      brandIntroBox.classList.add('docked');
-    }, letterDuration + 550);
-
-    setTimeout(() => {
-      introActions.classList.add('visible');
-    }, letterDuration + 900);
+    setTimeout(() => { brandIntroBox.classList.add('docked'); }, letterDuration + 550);
+    setTimeout(() => { introActions.classList.add('visible'); }, letterDuration + 900);
 
     openBtn.addEventListener('click', () => {
       introOverlay.classList.add('fade-out');
@@ -1774,10 +1885,8 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
   function startAudioFlow() {
     if (audioStarted) return;
     audioStarted = true;
-
     welcomeAudio.volume = 1.0;
     const playPromise = welcomeAudio.play();
-
     if (playPromise !== undefined) {
       playPromise.then(() => {
         welcomeAudio.onended = () => {
@@ -1938,7 +2047,7 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
 
   const unbanRequests = [
     "bhai mera bhi unban kar do please 🥺",
-    "apex bhai mera भी unban kar do UID check karo",
+    "apex bhai mera bhi unban kar do UID check karo",
     "bhai please mera id bhi kar do unban",
     "mera bhi unban kar do bhai bhot din se suspended hai",
     "bhai id unban kar do yaar, bhot pareshaan hu"
@@ -1971,10 +2080,7 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
     const handle = customUserList[userIndex];
     userIndex = (userIndex + 1) % customUserList.length;
     const cleanLetter = handle.replace(/[@._]/g, '')[0] || 'A';
-    return {
-      name: handle,
-      initial: cleanLetter.toUpperCase()
-    };
+    return { name: handle, initial: cleanLetter.toUpperCase() };
   }
 
   function injectComment() {
@@ -1990,16 +2096,9 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
       styleClass = "city-shoutout";
     } else {
       const r = Math.random();
-      if (r < 0.52) {
-        textStr = pick(unbanSuccessChats);
-        styleClass = "unban-proof";
-      } else if (r < 0.78) {
-        textStr = pick(unbanRequests);
-        styleClass = "unban-req";
-      } else {
-        textStr = pick(organicChannelChats);
-        styleClass = "";
-      }
+      if (r < 0.52) { textStr = pick(unbanSuccessChats); styleClass = "unban-proof"; }
+      else if (r < 0.78) { textStr = pick(unbanRequests); styleClass = "unban-req"; }
+      else { textStr = pick(organicChannelChats); styleClass = ""; }
     }
 
     const item = document.createElement('div');
@@ -2016,10 +2115,7 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
     `;
 
     stream.appendChild(item);
-
-    if (stream.children.length > 5) {
-      stream.removeChild(stream.firstElementChild);
-    }
+    if (stream.children.length > 5) stream.removeChild(stream.firstElementChild);
 
     const wEl = document.getElementById('chatWatchers');
     if (wEl) {
@@ -2032,9 +2128,7 @@ footer a { color: #ff4a4a; text-decoration: none; font-weight: bold; }
     setTimeout(injectComment, nextInterval);
   }
 
-  for (let i = 0; i < 3; i++) {
-    injectComment();
-  }
+  for (let i = 0; i < 3; i++) injectComment();
 </script>
 </body>
 </html>
